@@ -107,9 +107,12 @@ recursive_module : if INPUT_NUMBER > 1 generate
     end generate no_latency;
 
 
-
-dout <= std_logic_vector(to_signed(to_integer(signed(left_sum)) + to_integer(signed(right_sum)), OUTPUT_WIDTH));
-
+process(clk) 
+begin
+	if rising_edge(clk) then
+		dout <= std_logic_vector(to_signed(to_integer(signed(left_sum)) + to_integer(signed(right_sum)), OUTPUT_WIDTH));
+	end if;
+end process;
 
 
 
